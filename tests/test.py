@@ -33,11 +33,13 @@ class TestLiftingScheme(unittest.TestCase):
         arr = [1, 2, 3, 4, 5, 6, 7, 8]
         self.assertEqual([-0.5, -0.5, -0.5, -0.5], ls._lpf(arr))
 
-    def test_long_ranges(self):
+    def test_long_sequence(self):
         ls = LiftingScheme.LiftingScheme()
-        arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] * 2
+        arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
         ls.apply(arr)
         coeffs = ls.get_wavelet_coefficients()
+        self.assertEqual(
+            [8.5, -4.0, -2.0, -2.0, -1.0, -1.0, -1.0, -1.0, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5], coeffs)
 
 
 if __name__ == '__main__':

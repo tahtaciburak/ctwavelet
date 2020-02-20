@@ -20,21 +20,18 @@ class LiftingScheme:
             result.append((t_arr[0] - t_arr[1]) / 2)
         return result
 
-    def _apply(self, arr, branch="n", count=0):
+    def _apply(self, arr):
         self.result_arr.append(arr)
         if len(arr) == 1:
             return arr
-        count = count + 1
-        a = self._apply(self._hpf(arr), "h" * count, count)
-        b = self._apply(self._lpf(arr), "l" * count, count)
+        a = self._apply(self._hpf(arr))
+        b = self._apply(self._lpf(arr))
         return a, b
 
     def apply(self, arr):
         self.result_arr = []
         self.array = arr
-        branch = "n"
-        count = 0
-        return self._apply(arr, branch, count)
+        return self._apply(arr)
 
     def get_wavelet_coefficients(self):
         c = []
