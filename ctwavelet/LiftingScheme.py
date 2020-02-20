@@ -49,13 +49,11 @@ class LiftingScheme:
 
     def __parse_coeffs(self, array):
         last = []
+        index = 1
+        last.append([array[0]])
         for item in range(int(math.log2(len(array)))):
-            if item == 0:
-                last.append([array[item]])
-            else:
-                last.append(array[item:2 * item])
-        last.append(array[2 * item:])
-
+            last.append(array[index:index + 2 ** item])
+            index = index + 2 ** item
         return last
 
     def __reduce(self, arr1, arr2):
