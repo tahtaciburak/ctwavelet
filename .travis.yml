@@ -14,14 +14,11 @@ before_install:
   - export PACKAGE_NAME_VERSION=$PACKAGE_NAME.$BUILD_VERSION
 
 script:
-  - python setup.py sdist bdist_wheel
+  - python3 setup.py sdist bdist_wheel
   - pip install .
-  - pip install pytest
-  - pip install codecov
   - pytest tests/*
   - codecov
-after_success:
-  - codecov # submit coverage
+
 deploy:
   provider: pypi
   user: "tahtaciburak"
