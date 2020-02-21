@@ -1,18 +1,13 @@
 sudo: false
 language: python
 python:
-  - "3.6"      # current default Python on Travis CI
-  - "3.7"
-  - "3.8"
-
+  - '3.6'
 env:
   global:
     - PACKAGE_NAME=ctwavelet
-
 before_install:
   - export BUILD_VERSION=$(date "+%Y%m%d").$TRAVIS_BUILD_NUMBER
   - export PACKAGE_NAME_VERSION=$PACKAGE_NAME.$BUILD_VERSION
-
 script:
   - python setup.py sdist bdist_wheel
   - pip install .
@@ -20,17 +15,14 @@ script:
   - pip install codecov
   - pytest tests/*
   - codecov
-
 deploy:
   provider: pypi
   user: tahtaciburak
   distributions: sdist bdist_wheel
   password:
-    secure: TY2nnirLmg223ldugBKnduhuIbA8SAlcKvxuWZm5w68SRi+KBCoO3U8jxG4vW89S7SICbOn02rW3OqypzwYjhFQNc0/pUJ5bDX0QnbABmU0ViaukRbO2hlZ93dG/m2H4zAPkebXe9jFgW1HQMUPvZEkS/o1hSNpcxO+pjcESzyORMOTgo29ivQsz65eH4m42OZtPCLMqCHl5Ti9v/LcxpZ7rBOo4i+wX/1VoaYdozZh0mpewpJ9nmJP7r9dS9XDWxadEHQjpedR6ECAqP4ijS8xNrlmcFrLYXysBlmwAPqhdbdh41GZfYPbxidnN1pSy+pv52VZZ1kq8V0peDJFljXNrW8S5Wl06S7gLAGBbto31SJjV10FKCyD7CjoHJxYGU/yESGSl3hYqkx5SV4JnyOY502PQjEq+eAMq9zotB+yy04g+FJo8IQq9EiMl9IKvaA7FERXUD8d00o8ZE43gt6e/vIAfD7G03udouHtQPzeG/LUPfN9RNApux+LtF0u50HeptOb0c49LrfTnFd6Nl7Y198NCWmT8ZozR3LwHG3LJEvy3a/xe+iTeX7NaVy2lPCJUMhqFL7wFqhh59NWgGqOOUqNx4Uq6lVq2fqMlF0XmK13qwOT69VMjCTM6GktcA7HgwmYpdLwVFClVHG0Rp40aT5TQI33nvix8Yxh3hdY=
+    secure: PHhopVZE+4XHWHrQ8NOMGpeY4+7MyKDp8ly1gZR5+/caSbxUr/WK4BKYdIxkN01rmp3Z+nWjB6XZyQqw8DtDTvQaZgKRn99r+NnZ5X5Y13aSM0RMMB7o5sxriRrzRdjwTnnJ7E9tYJ7zRn7hbKvIkaumX7U3v5qL4Uq/95Fe0S202c/lzAhZpRn3F4C7gqfFcD1MRVG8d9QhHsaRUC4SwYNl2LbnLmUcO1VvqUEK1ArSwb+ja9IjifbESn+El402LWtxWd1K9zsSuoGGpzUImOaoDvR31lvrRBLiyOTXr++/iPLP1k6llymnMQdBqzPYIfHyIU7kK1zHxQB2yeJsYbz/evBF1fxyCSZXvhq8QixXbowIDLFYyu6uvOgM4brSoALS8TaYOYOFjP3/WDK67W8gf/Tuu7uPC/4ZHdB8ZXrPMeUuoCOdH5VCBK4pRbboACHeM1VjgkFR3PHGuDdzrtrTUIUqJ/sQ4IXwUbhB2vwAZ8In8bgz5wPDPMDpPOKAiOqay6QY/AuXUSsUqPc5MT6XztjtqogsVoG4Dj00A+cEQlhlfz8HALI3tXYcENJoRaftc243aT5tkogIfM6aIJxGL7+54Lm+6e3maMCEB7YxdMx45AWVoAMPzGvn4Tj1UjYHuPdm8vjPbnNaMmLszaCwEuksCNBty+XPrwXB1Ug=
   skip_cleanup: true
-
+  skip_existing: true
 notifications:
   email:
-    - tahtaciburak@gmail.com
-
-
+  - tahtaciburak@gmail.com
