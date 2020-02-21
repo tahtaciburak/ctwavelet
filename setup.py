@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="ctwavelet",
-    version="1.0.0",
+    version="1.0.1",
     author="Burak Tahtacı",
     author_email="buraktahtaci@crypttech.com",
     description="A wavelet transform library based on Haar Lifting Scheme",
