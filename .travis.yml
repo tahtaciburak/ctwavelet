@@ -14,8 +14,10 @@ before_install:
   - export PACKAGE_NAME_VERSION=$PACKAGE_NAME.$BUILD_VERSION
 
 script:
-  - python3 setup.py sdist bdist_wheel
+  - python setup.py sdist bdist_wheel
   - pip install .
+  - pip install pytest
+  - pip install codecov
   - pytest tests/*
   - codecov
 
@@ -24,7 +26,7 @@ deploy:
   user: "tahtaciburak"
   distributions: sdist bdist_wheel
   password:
-    secure: "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAx1uMBwYCptHUtCtIKS0N\neZbHhDAsAaqP0wtbbuRfVi9ANei6W8zAReF6MH9pmuRnfB4pSGy1wabyP9eGwq/3\nHyqdFfPszkf0sgwbC3iqH8+75ldEmfIg9XR51TDfx+xMuY0agQL5HGgP8yaqpHy3\noyz3nGdgdxIFpTqqaJXzj/YAEw7YzwMkPUWBzjHqmUlH1vq3pkA1bH6LlbZsc++b\noLMwesSk8wUz00JSrjgNw4dIPJLNAVoUMr/VZSbq4eCXdyiRGfrlorBmiy/OpDah\nt9JAgUOrrRmXxCCiqc2B6VMvFq7vO2MuVQGh4R7Drs3QMaT4XASpm+pwGBm+VkwH\npuFxv7l0ze2MjopmrN+BeTAWnJsIUJgtbHxUCBnh+pFcf5N4A3Si+D/hs2qJtg9m\nwGxFN5E00zg+V2S+JGYQ+0M3pzVT5t62A70dc9C9yOsYVssFk3P5SvIG1GXARduz\nw67XZdL3cVHhznDBvEUQI3KdX7GAuHYvqbsBIr6IrgJMRG5MoKJVbZG/e+V92b6F\n68x8GqwO91eFJnhRu6P1v9Hs1xxKGofZstoPscWtFHgCuhiTuZQuW9JiBovHGJHp\nx+vjjeyiqx8N9YuARmlOS9scHA63ISMxXH9YQPjidSUSiesFbKNtyuunqEH5WJU2\nyN4PdUJJgK9ppccDu0nOcR8CAwEAAQ=="
+    secure: "TY2nnirLmg223ldugBKnduhuIbA8SAlcKvxuWZm5w68SRi+KBCoO3U8jxG4vW89S7SICbOn02rW3OqypzwYjhFQNc0/pUJ5bDX0QnbABmU0ViaukRbO2hlZ93dG/m2H4zAPkebXe9jFgW1HQMUPvZEkS/o1hSNpcxO+pjcESzyORMOTgo29ivQsz65eH4m42OZtPCLMqCHl5Ti9v/LcxpZ7rBOo4i+wX/1VoaYdozZh0mpewpJ9nmJP7r9dS9XDWxadEHQjpedR6ECAqP4ijS8xNrlmcFrLYXysBlmwAPqhdbdh41GZfYPbxidnN1pSy+pv52VZZ1kq8V0peDJFljXNrW8S5Wl06S7gLAGBbto31SJjV10FKCyD7CjoHJxYGU/yESGSl3hYqkx5SV4JnyOY502PQjEq+eAMq9zotB+yy04g+FJo8IQq9EiMl9IKvaA7FERXUD8d00o8ZE43gt6e/vIAfD7G03udouHtQPzeG/LUPfN9RNApux+LtF0u50HeptOb0c49LrfTnFd6Nl7Y198NCWmT8ZozR3LwHG3LJEvy3a/xe+iTeX7NaVy2lPCJUMhqFL7wFqhh59NWgGqOOUqNx4Uq6lVq2fqMlF0XmK13qwOT69VMjCTM6GktcA7HgwmYpdLwVFClVHG0Rp40aT5TQI33nvix8Yxh3hdY="
   skip_cleanup: true
 
 notifications:
